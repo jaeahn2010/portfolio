@@ -1,0 +1,139 @@
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#board {
+    border-style: solid;
+    border-color: white;
+    text-align: center;
+    height: 600px; /*keep absolute unit here*/
+    width: 600px; /*keep absolute unit here*/
+}
+
+p {
+    text-align: center;
+}
+
+th {
+    text-align: center;
+}
+
+tr {
+    border-style: solid;
+    border-color: white;
+    height: 200px; /*keep absolute unit here*/
+}
+
+td {
+    border-style: solid;
+    border-color: white;
+    cursor: pointer;
+    height: 200px; /*keep absolute unit here*/
+    width: 200px; /*keep absolute unit here*/
+}
+
+img {
+    width: 150px; /*keep absolute unit here*/
+}
+
+td:hover {
+    background-color: green;
+}
+
+#welcome-modal {
+    background-color: var(--modal-gray);
+    border-style: none;
+    border-radius: 20px;
+    font-family: 'Chalkduster', 'fantasy';
+    margin: 25vh;
+    padding: 2vh;
+    text-align: center;
+}
+
+#name-modal {
+    background-color: var(--modal-gray);
+    border-style: none;
+    border-radius: 20px;
+    display: none;
+    font-family: 'Chalkduster', 'fantasy';
+    margin: 25vh;
+    padding: 2vh;
+    text-align: center;
+}
+
+#ox-modal { /* only one slightly different */
+    background-color: var(--modal-gray);
+    border-style: none;
+    border-radius: 20px;
+    display: none;
+    font-family: 'Chalkduster', 'fantasy';
+    margin: 15vh 0;
+    padding: 2vh;
+    text-align: center;
+}
+
+#first-play-modal {
+    background-color: var(--modal-gray);
+    border-style: none;
+    border-radius: 20px;
+    display: none;
+    font-family: 'Chalkduster', 'fantasy';
+    margin: 25vh;
+    padding: 2vh;
+    text-align: center;
+}
+
+#play-again-modal {
+    background-color: var(--modal-gray);
+    border-style: none;
+    border-radius: 20px;
+    display: none;
+    font-family: 'Chalkduster', 'fantasy';
+    margin: 25vh;
+    padding: 2vh;
+    text-align: center;
+}
+
+#the-game {
+    display: none;
+    padding: 20vh;
+    text-align: center;
+}
+
+.move-choice {
+    background-color: var(--button-gray);
+    border-style: solid;
+    border-color: white;
+    border-radius: 20%;
+    border-width: 2px;
+    cursor: pointer;
+    margin: 5vw;
+}
+
+footer {
+    display: flex;
+    gap: 15px;
+}
+
+button, #submit-btn {
+    background-color: var(--button-gray);
+    border-style: solid;
+    border-color: white;
+    border-radius: 2vh;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+}
+
+button:hover, #submit-btn:hover, .move-choice:hover {
+    background-color: green;
+}
+
+:root {
+    --button-gray: rgba(100,100,100);
+    --modal-gray: rgba(210,210,210);
+}
