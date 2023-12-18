@@ -1,6 +1,7 @@
 /*
-stretch idea 1: make choice for 3x3, 4x4, and 5x5
+stretch idea 1: make choice for 3x3, 4x4, and 5x5 boards
 srretch idea 2: enable undo move
+stretch idea 3: make computer 'smarter' by analyzing what move will be advantageous
 
 load modal #1 w/ welcome message w/ close button
     close modal when user presses close
@@ -56,6 +57,7 @@ const compFirst = cssSelect('#comp-first')
 const exit = cssSelect('#exit');
 const firstPlayModal = cssSelect('#first-play-modal');
 const homePage = cssSelect('#home-page');
+const msgBoard = cssSelect('#msg-board');
 const modeToggle = cssSelect('#mode-toggle');
 const moveChoice= cssSelect('.move-choice');
 const nameModal= cssSelect('#name-modal');
@@ -67,7 +69,7 @@ const playBtn = cssSelect('#play-btn');
 const restart = cssSelect('#restart');
 const quitGame = cssSelect('#quit-game');
 const theGame = cssSelect('#the-game');
-const theMove= cssSelect('.the-move');
+const theMove = cssSelect('.the-move');
 const submitBtn = cssSelect('#submit-btn')
 const userFirst = cssSelect('#user-first')
 const userName = cssSelect('#user-name');
@@ -119,32 +121,76 @@ function toFirstPlayModal(userChoice) {
 }
 
 let round = 0;
-let possibleMoves = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-let totalTurns = 0;
+//use an array here to allow it to be spliced across functions
+let possibleMoves = ['sq1', 'sq2', 'sq3', 'sq4', 'sq5', 'sq6', 'sq7', 'sq8', 'sq9'];
 
-function mainGamePlay(shape, userTurn) {
-    console.log(shape);
-    if (shape === 'o') {
+function mainGamePlay(userShape, userTurn) {
+    if (userShape === 'o') {
         document.getElementById('o-btn').id = 'user-choice';
         document.getElementById('x-btn').id = 'comp-choice';        
-    } else if (shape === 'x') {
+    } else if (userShape === 'x') {
         document.getElementById('x-btn').id = 'user-choice';
         document.getElementById('o-btn').id = 'comp-choice';        
     }
-    console.log(document.getElementById('user-choice'));
     userImg = document.getElementById('user-choice');
     compImg = document.getElementById('comp-choice');
     userImg.classList.remove('move-choice');
     compImg.classList.remove('move-choice');
     if (userTurn === true) {
-        userMove(possibleMoves, totalTurns);
+        userMove();
     } else {
-        compMove(possibleMoves, totalTurns);
+        compMove();
     }
-    function userMove(possibleMoves, totalTurns) {
-        sq1.addEventListener('click', () => {
-            sq1.style.cursor = 'not-allowed';
-            sq1.appendChild(userImg);
-        });
+    function userMove() {
+        msgBoard.innerText = 'Please select a square.'
+        sq1.addEventListener('click', fillSquare);
+        sq2.addEventListener('click', fillSquare);
+        sq3.addEventListener('click', fillSquare);
+        sq4.addEventListener('click', fillSquare);
+        sq5.addEventListener('click', fillSquare);
+        sq6.addEventListener('click', fillSquare);
+        sq7.addEventListener('click', fillSquare);
+        sq8.addEventListener('click', fillSquare);
+        sq9.addEventListener('click', fillSquare);
     }
+    function fillSquare(event) {
+        let square = event.target;
+        let squareToRemove = possibleMoves.indexOf(event.target.id);
+        if (squareToRemove > -1) {
+            possibleMoves.splice(squareToRemove, 1);
+            //need to create new element in order for images to stay on squares
+            let tempImg = document.createElement('img');
+            if (userShape === 'o') {
+                tempImg.src = 'TTTo.png';
+            } else if (userShape === 'x') {
+                tempImg.src = 'TTTx.png';
+            }
+            square.innerText = '';
+            square.style.cursor = 'not-allowed';
+            square.appendChild(tempImg);
+            msgBoard.innerText = `${userInput} has selected ${event.target.id}.`
+            compMove();
+        } else {
+            msgBoard.innerText = 'This square is already taken. Please select another square.'
+            userMove();
+        }
+    }
+    function compMove() {
+        //generate random integer from 0 to length of move list (grabs index)
+        let compIndex = Math.floor((Math.random() * possibleMoves.length));
+        let squareToRemove = possibleMoves[compIndex];
+        let square = document.getElementById(squareToRemove);
+        possibleMoves.splice(compIndex, 1);
+        let tempImg = document.createElement('img');
+        if (userShape === 'o') {
+            tempImg.src = 'TTTx.png';
+        } else if (userShape === 'x') {
+            tempImg.src = 'TTTo.png';
+        }
+        square.innerText = '';
+        square.style.cursor = 'not-allowed';
+        square.appendChild(tempImg);
+        msgBoard.innerText = `The computer has selected ${squareToRemove}.`
+        userMove();
+    } 
 }
