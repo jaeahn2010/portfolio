@@ -117,6 +117,7 @@ td:hover {
 footer {
     display: flex;
     gap: 15px;
+    margin: 5vw;
 }
 
 button, #submit-btn {

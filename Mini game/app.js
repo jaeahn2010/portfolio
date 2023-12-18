@@ -50,39 +50,6 @@ function cssSelect(selector) {
     return document.querySelector(selector);
 }
 
-//function for opening/closing appropriate modals
-function closeModal(closeBtn) {
-    closeBtn.addEventListener('click', function () {
-        switch(closeBtn) {
-            case playBtn:
-                welcomeModal.style.display = 'none';
-                nameModal.style.display = 'block';
-                break;
-            case submitBtn:
-                nameModal.style.display = 'none';
-                oxModal.style.display = 'block';
-                break;
-            case oBtn:
-            case xBtn:
-                oxModal.style.display = 'none';
-                firstPlayModal.style.display = 'block';
-                break;
-            case userFirst:
-            case compFirst:
-                firstPlayModal.style.display = 'none';
-                theGame.style.display = 'block';               
-            case playAgain:
-            case quitGame:
-                playAgainModal.style.display = 'none';
-                theGame.style.display = 'block';
-                break;
-            default:
-                //do nothing
-        }
-        
-    });
-}
-
 //HTML elements to be put into cssSelect function
 const board = cssSelect('#board');
 const compFirst = cssSelect('#comp-first')
@@ -92,7 +59,7 @@ const homePage = cssSelect('#home-page');
 const modeToggle = cssSelect('#mode-toggle');
 const moveChoice= cssSelect('.move-choice');
 const nameModal= cssSelect('#name-modal');
-const oBtn =cssSelect('#o-btn');
+const oBtn = cssSelect('#o-btn');
 const oxModal= cssSelect('#ox-modal');
 const playAgain = cssSelect('#play-again');
 const playAgainModal = cssSelect('#play-again-modal');
@@ -106,14 +73,78 @@ const userFirst = cssSelect('#user-first')
 const userName = cssSelect('#user-name');
 const welcomeModal= cssSelect('#welcome-modal');
 const xBtn = cssSelect('#x-btn');
+const sq1 = cssSelect('#sq1');
+const sq2 = cssSelect('#sq2');
+const sq3 = cssSelect('#sq3');
+const sq4 = cssSelect('#sq4');
+const sq5 = cssSelect('#sq5');
+const sq6 = cssSelect('#sq6');
+const sq7 = cssSelect('#sq7');
+const sq8 = cssSelect('#sq8');
+const sq9 = cssSelect('#sq9');
 
-//call this function with these selectors to ensure all buttons are active
-closeModal(playBtn);
-closeModal(submitBtn);
-closeModal(oBtn);
-closeModal(xBtn);
-closeModal(userFirst);
-closeModal(compFirst);
-closeModal(playAgain);
-closeModal(quitGame);
+playBtn.addEventListener('click', function () {
+    welcomeModal.style.display = 'none';
+    nameModal.style.display = 'block';
+});
+submitBtn.addEventListener('click', function () {
+    userInput = document.getElementById('user-input').value;
+    document.getElementById('user-name').innerText = userInput;
+    nameModal.style.display = 'none';
+    oxModal.style.display = 'block';
+});
+oBtn.addEventListener('click', function () {
+    let userChoice = 'o';
+    oxModal.style.display = 'none';
+    firstPlayModal.style.display = 'block';
+    toFirstPlayModal(userChoice);
+});
+xBtn.addEventListener('click', function () {
+    let userChoice = 'x';
+    oxModal.style.display = 'none';
+    firstPlayModal.style.display = 'block';
+    toFirstPlayModal(userChoice);
+});
+function toFirstPlayModal(userChoice) {
+    userFirst.addEventListener('click', function () {
+        mainGamePlay(userChoice, true);
+        firstPlayModal.style.display = 'none';
+        theGame.style.display = 'block';  
+    });
+    compFirst.addEventListener('click', function () {
+        mainGamePlay(userChoice, false);
+        firstPlayModal.style.display = 'none';
+        theGame.style.display = 'block';  
+    });
+}
 
+let round = 0;
+let possibleMoves = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let totalTurns = 0;
+
+function mainGamePlay(shape, userTurn) {
+    console.log(shape);
+    if (shape === 'o') {
+        document.getElementById('o-btn').id = 'user-choice';
+        document.getElementById('x-btn').id = 'comp-choice';        
+    } else if (shape === 'x') {
+        document.getElementById('x-btn').id = 'user-choice';
+        document.getElementById('o-btn').id = 'comp-choice';        
+    }
+    console.log(document.getElementById('user-choice'));
+    userImg = document.getElementById('user-choice');
+    compImg = document.getElementById('comp-choice');
+    userImg.classList.remove('move-choice');
+    compImg.classList.remove('move-choice');
+    if (userTurn === true) {
+        userMove(possibleMoves, totalTurns);
+    } else {
+        compMove(possibleMoves, totalTurns);
+    }
+    function userMove(possibleMoves, totalTurns) {
+        sq1.addEventListener('click', () => {
+            sq1.style.cursor = 'not-allowed';
+            sq1.appendChild(userImg);
+        });
+    }
+}
