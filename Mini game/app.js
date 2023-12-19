@@ -52,10 +52,10 @@ function cssSelect(selector) {
 }
 
 //HTML elements to be put into cssSelect function
-const board = cssSelect('#board');
 const compFirst = cssSelect('#comp-first')
 const exit = cssSelect('#exit');
 const firstPlayModal = cssSelect('#first-play-modal');
+const gameboard = cssSelect('#gameboard');
 const homePage = cssSelect('#home-page');
 const msgBoard = cssSelect('#msg-board');
 const modeToggle = cssSelect('#mode-toggle');
@@ -75,15 +75,15 @@ const userFirst = cssSelect('#user-first')
 const userName = cssSelect('#user-name');
 const welcomeModal= cssSelect('#welcome-modal');
 const xBtn = cssSelect('#x-btn');
-const sq1 = cssSelect('#sq1');
-const sq2 = cssSelect('#sq2');
-const sq3 = cssSelect('#sq3');
-const sq4 = cssSelect('#sq4');
-const sq5 = cssSelect('#sq5');
-const sq6 = cssSelect('#sq6');
-const sq7 = cssSelect('#sq7');
-const sq8 = cssSelect('#sq8');
-const sq9 = cssSelect('#sq9');
+const sq1 = cssSelect('#sq0');
+const sq2 = cssSelect('#sq1');
+const sq3 = cssSelect('#sq2');
+const sq4 = cssSelect('#sq3');
+const sq5 = cssSelect('#sq4');
+const sq6 = cssSelect('#sq5');
+const sq7 = cssSelect('#sq6');
+const sq8 = cssSelect('#sq7');
+const sq9 = cssSelect('#sq8');
 
 playBtn.addEventListener('click', function () {
     welcomeModal.style.display = 'none';
@@ -95,102 +95,139 @@ submitBtn.addEventListener('click', function () {
     nameModal.style.display = 'none';
     oxModal.style.display = 'block';
 });
-oBtn.addEventListener('click', function () {
-    let userChoice = 'o';
+
+oxModal.addEventListener('click', function (evt) {
+    if (evt.target.tagName !== 'IMG') return; //prevents user from clicking anywhere outside of buttons
+    let userChoice = evt.target.id[0]; //grabs 'o' or 'x'
     oxModal.style.display = 'none';
     firstPlayModal.style.display = 'block';
     toFirstPlayModal(userChoice);
 });
-xBtn.addEventListener('click', function () {
-    let userChoice = 'x';
-    oxModal.style.display = 'none';
-    firstPlayModal.style.display = 'block';
-    toFirstPlayModal(userChoice);
-});
+
 function toFirstPlayModal(userChoice) {
-    userFirst.addEventListener('click', function () {
-        mainGamePlay(userChoice, true);
+    firstPlayModal.addEventListener('click', function(evt) {
+        if (evt.target.tagName !== 'BUTTON') return;
+        let userGoesFirst = evt.target.id; //grabs 'user-first' or 'comp-first'
         firstPlayModal.style.display = 'none';
-        theGame.style.display = 'block';  
-    });
-    compFirst.addEventListener('click', function () {
-        mainGamePlay(userChoice, false);
-        firstPlayModal.style.display = 'none';
-        theGame.style.display = 'block';  
+        theGame.style.display = 'block';
+        mainGamePlay(userChoice, userGoesFirst);
     });
 }
 
 let round = 0;
+let winCount = 0;
+let tieCount = 0;
+let lossCount = 0;
 //use an array here to allow it to be spliced across functions
-let possibleMoves = ['sq1', 'sq2', 'sq3', 'sq4', 'sq5', 'sq6', 'sq7', 'sq8', 'sq9'];
+let possibleMoves = [null, null, null, null, null, null, null, null, null];
 
-function mainGamePlay(userShape, userTurn) {
+function mainGamePlay(userShape, whoseTurn) {
+    
+    //set images
     if (userShape === 'o') {
-        document.getElementById('o-btn').id = 'user-choice';
-        document.getElementById('x-btn').id = 'comp-choice';        
-    } else if (userShape === 'x') {
-        document.getElementById('x-btn').id = 'user-choice';
-        document.getElementById('o-btn').id = 'comp-choice';        
-    }
-    userImg = document.getElementById('user-choice');
-    compImg = document.getElementById('comp-choice');
-    userImg.classList.remove('move-choice');
-    compImg.classList.remove('move-choice');
-    if (userTurn === true) {
-        userMove();
+        userImg = document.getElementById('o-btn');
+        compImg = document.getElementById('x-btn');
     } else {
-        compMove();
+        userImg = document.getElementById('x-btn');
+        compImg = document.getElementById('o-btn');
     }
-    function userMove() {
-        msgBoard.innerText = 'Please select a square.'
-        sq1.addEventListener('click', fillSquare);
-        sq2.addEventListener('click', fillSquare);
-        sq3.addEventListener('click', fillSquare);
-        sq4.addEventListener('click', fillSquare);
-        sq5.addEventListener('click', fillSquare);
-        sq6.addEventListener('click', fillSquare);
-        sq7.addEventListener('click', fillSquare);
-        sq8.addEventListener('click', fillSquare);
-        sq9.addEventListener('click', fillSquare);
+
+    //set turns
+    let turnPass = 0; //user's turn is 1, comp's turn is -1
+    if (whoseTurn === 'user-first') {
+        turnPass = 1;
+    } else {
+        turnPass = -1;
+    }
+    makeMove(turnPass);
+
+    //player actually makes a move here
+    function makeMove(turnPass) {
+        if (turnPass == 1) {
+            msgBoard.innerText = 'Please select a square.'
+            gameboard.addEventListener('click', fillSquare);
+        } else {
+            fillSquare(null);
+        }
     }
     function fillSquare(event) {
-        let square = event.target;
-        let squareToRemove = possibleMoves.indexOf(event.target.id);
-        if (squareToRemove > -1) {
-            possibleMoves.splice(squareToRemove, 1);
+        let square = '';
+        let moveIndex = 0;
+        //if user's turn, grab clicked cell; if comp's turn, grab random cell
+        if (turnPass == 1) {
+            if (event.target.tagName !== 'TD') return;
+            square = event.target; //grabs clicked <td> element
+            moveIndex = Number(square.id[2]); //grabs id, which will be used for array index
+        } else if (turnPass == -1) {
+            moveIndex = Math.floor(Math.random() * possibleMoves.length);
+            square = document.getElementById(`sq${moveIndex}`); //grabs <td> element matching the random int
+        }
+        //check if the cell is already taken or not
+        //if not taken yet, mark it as 'taken'
+        if (possibleMoves[moveIndex] !== 'taken') {
+            possibleMoves[moveIndex] = 'taken';
             //need to create new element in order for images to stay on squares
-            let tempImg = document.createElement('img');
-            if (userShape === 'o') {
-                tempImg.src = 'TTTo.png';
-            } else if (userShape === 'x') {
-                tempImg.src = 'TTTx.png';
+            let currentPlayerImg = document.createElement('img');
+            if ((turnPass == 1 && userShape === 'o') || (turnPass == -1 && userShape === 'x')) {
+                currentPlayerImg.src = 'TTTo.png';
+                square.innerText = 'o';    
+            } else if ((turnPass == -1 && userShape === 'o') || (turnPass == 1 && userShape === 'x')) {
+                currentPlayerImg.src = 'TTTx.png';
+                square.innerText = 'x';
             }
-            square.innerText = '';
             square.style.cursor = 'not-allowed';
-            square.appendChild(tempImg);
-            msgBoard.innerText = `${userInput} has selected ${event.target.id}.`
-            compMove();
+            square.removeEventListener('click', fillSquare);
+            square.appendChild(currentPlayerImg);
+            if (turnPass == 1) {
+                msgBoard.innerText = `${userInput} has selected square ${Number(moveIndex) + 1}.`
+            } else if (turnPass == -1) {
+                msgBoard.innerText = `The computer has selected square ${Number(moveIndex) + 1}.`
+            }
+            turnPass *= -1;
+            setTimeout(checkForWin(turnPass), 3000);
         } else {
-            msgBoard.innerText = 'This square is already taken. Please select another square.'
-            userMove();
+            //display this message only for user
+            if (turnPass == 1) {
+                msgBoard.innerText = 'This square is already taken. Please select another square.'
+            }
+            setTimeout(makeMove(turnPass), 5000);
         }
     }
-    function compMove() {
-        //generate random integer from 0 to length of move list (grabs index)
-        let compIndex = Math.floor((Math.random() * possibleMoves.length));
-        let squareToRemove = possibleMoves[compIndex];
-        let square = document.getElementById(squareToRemove);
-        possibleMoves.splice(compIndex, 1);
-        let tempImg = document.createElement('img');
-        if (userShape === 'o') {
-            tempImg.src = 'TTTx.png';
-        } else if (userShape === 'x') {
-            tempImg.src = 'TTTo.png';
+
+    function checkForWin(turnPass) {
+        let theWinner = '';
+        if (turnPass == 1) {
+            theWinner = 'computer';
+        } else {
+            theWinner = 'user';
         }
-        square.innerText = '';
-        square.style.cursor = 'not-allowed';
-        square.appendChild(tempImg);
-        msgBoard.innerText = `The computer has selected ${squareToRemove}.`
-        userMove();
-    } 
+        if ((sq1.innerText === sq2.innerText && sq2.innerText === sq3.innerText) || (sq4.innerText === sq5.innerText && sq5.innerText === sq6.innerText) || (sq7.innerText === sq8.innerText & sq8.innerText === sq9.innerText) || (sq1.innerText === sq4.innerText & sq4.innerText === sq7.innerText) || (sq2.innerText === sq5.innerText & sq5.innerText === sq8.innerText) || (sq3.innerText === sq6.innerText & sq6.innerText === sq9.innerText) || (sq1.innerText === sq5.innerText & sq5.innerText === sq9.innerText) || (sq3.innerText === sq5.innerText & sq5.innerText === sq7.innerText)) {
+            declareWinner(theWinner);
+        } else {
+            if (possibleMoves.includes(null)) {
+                makeMove(turnPass);
+            } else if (!possibleMoves.includes(null)) {
+                declareWinner('tie');
+            }
+        }
+    }
+
+    function declareWinner(winner) {
+        winCount = Number(document.getElementById('win-count').innerText);
+        tieCount = Number(document.getElementById('tie-count').innerText);
+        lossCount = Number(document.getElementById('loss-count').innerText);
+        if (winner === 'user') {
+            msgBoard.innerText = 'Congratulations! You win!';
+            gameboard.removeEventListener('click', fillSquare);
+            winCount++;
+        } else if (winner === 'tie') {
+            msgBoard.innerText = 'It\'s a tie.';
+            gameboard.removeEventListener('click', fillSquare);
+            tieCount++;
+        } else if (winner === 'computer') {
+            msgBoard.innerText = 'Too bad! You lose.';
+            gameboard.removeEventListener('click', fillSquare);
+            lossCount++;
+        }
+    }
 }

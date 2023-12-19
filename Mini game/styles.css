@@ -6,7 +6,7 @@ body {
     align-items: center;
 }
 
-#board {
+#gameboard {
     border-style: solid;
     border-color: white;
     text-align: center;
