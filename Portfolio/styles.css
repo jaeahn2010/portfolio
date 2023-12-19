@@ -1,0 +1,135 @@
+@media screen and (min-width: 1080px) {
+    #main-heading {font-size: 36px;}
+    #welcome {font-size: 30px;}
+}
+
+body {
+    animation-name: fade;
+    animation-duration: 5s;
+    background-color: var(--background-gray);
+    color: var(--text-white);
+    font-family: Luminari, fantasy;
+}
+
+nav {
+    color: var(--text-white);
+    text-align: center;
+}
+
+a {
+    margin: 3vw;
+}
+
+a:link {
+    color: var(--text-white);
+}
+
+a:visited {
+    color: rgb(216, 216, 0);
+}
+
+a:hover {
+    color: rgb(0, 255, 255);
+}
+
+.main-heading {
+    padding-top: 10vh;
+    text-align: center;
+}
+
+#headshot {
+    border-style: none;
+    border-radius: 50px;
+    float: left;
+    padding: 25px;
+    width: 25%;
+}
+
+#welcome {
+    display: flex;
+    align-items: center;
+    line-height: 2.5;
+}
+
+footer {
+    color: var(--text-white);
+    text-align: center;
+}
+
+.social-media {
+    cursor: pointer;
+    padding-top: 10vh;
+    margin: 5vw;
+    width: 5vw;
+}
+
+.social-media:hover {
+    animation: shake 1.5s ease-in 0s infinite;
+
+}
+
+/* CSS for bio page */
+#bio {
+    line-height: 2.5;
+    padding: 10vw;
+    text-align: justify;
+}
+
+.slideshow {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+.slides {
+    text-align: center;
+    /* display: none; */
+}
+
+.slides img {
+    padding: 25px;
+    width: 50%;
+}
+
+#prev-btn, #next-btn {
+    border-style: none;
+    border-radius: 0 3px 3px 0;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: -22px;
+    padding: 16px;
+    position: absolute;
+    top: 50%;
+    transition: 0.6s ease;
+    user-select: none;
+    width: auto;
+}
+
+#prev-btn:hover, #next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#next-btn {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+:root {
+    --background-gray: rgb(36, 36, 36);
+    --text-white: rgb(216, 216, 216);
+}
+
+@keyframes fade {
+    from {opacity: 0}
+    to {opacity: 100}
+}
+
+@keyframes shake {
+    0% {transform: translateY(-2vh);}
+    25% {transform: translateY(0vh);}
+    50% {transform: translateY(-1vh);}
+    75% {transform: translateY(0vh);}
+    100% {transform: translateY(-0.5vh);}
+}
