@@ -1,8 +1,10 @@
+/*-------------------CSS media queries-------------------*/
 @media screen and (min-width: 1080px) {
     #main-heading {font-size: 36px;}
     #welcome {font-size: 30px;}
 }
 
+/*-------------------CSS for all pages-------------------*/
 body {
     animation-name: fade;
     animation-duration: 5s;
@@ -37,6 +39,12 @@ a:hover {
     text-align: center;
 }
 
+footer {
+    color: var(--text-white);
+    text-align: center;
+}
+
+/*-------------------CSS for main page-------------------*/
 #headshot {
     border-style: none;
     border-radius: 50px;
@@ -51,11 +59,6 @@ a:hover {
     line-height: 2.5;
 }
 
-footer {
-    color: var(--text-white);
-    text-align: center;
-}
-
 .social-media {
     cursor: pointer;
     padding-top: 10vh;
@@ -68,7 +71,7 @@ footer {
 
 }
 
-/* CSS for bio page */
+/*-------------------CSS for bio page-------------------*/
 #bio {
     line-height: 2.5;
     padding: 10vw;
@@ -83,7 +86,7 @@ footer {
 
 .slides {
     text-align: center;
-    /* display: none; */
+    user-select: none;
 }
 
 .slides img {
@@ -108,7 +111,7 @@ footer {
 }
 
 #prev-btn:hover, #next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #next-btn {
@@ -116,9 +119,131 @@ footer {
     border-radius: 3px 0 0 3px;
 }
 
+/*-------------------CSS for resume page-------------------*/
+#top-container {
+    border-style: solid;
+    display: flex;
+    justify-content: space-around;
+}
+
+#top-left-btn, #top-right-btn, #bottom-left-btn, #bottom-right-btn {
+    background-color: var(--container-background-gray);
+    border-style: solid;
+    padding: 3vw;
+    margin: 3vw;
+    text-align: center;
+}
+
+#middle-container {
+    background-color: var(--container-background-gray);
+    border-style: solid;
+    line-height: 2.5;
+    margin: 3vw;
+    padding: 3vw 20vw;
+    text-align: center;
+}
+
+#middle-container:hover, #top-left-btn:hover, #top-right-btn:hover, #bottom-left-btn:hover, #bottom-right-btn:hover {
+    background-color: var(--button-hover-yellow);
+    color: var(--text-black);
+    box-shadow: 5px 5px var(--box-shadow-yellow);
+    cursor: pointer;
+}
+
+#bottom-container {
+    border-style: solid;
+    display: flex;
+    justify-content: space-around;
+}
+
+#all-modals {
+    animation: modal-zoom-out 0.5s ease-in 0s 1;
+    border: 1px solid white;
+    border-radius: 20px;
+    display: none;
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    line-height: 2.5;
+    position: fixed;
+    width: 75%;
+    height: 75%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 5vw;
+    margin: 5vw;
+    z-index: 1;
+}
+
+#top-left-modal, #top-right-modal, #bottom-left-modal, #bottom-right-modal {
+    display: none;
+}
+
+#modal-close-btn {
+    background-color: var(--container-background-gray);
+    border: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5vw 0 5vw 30vw;
+    text-align: center;
+    width: 15%;
+}
+
+#modal-close-btn:hover {
+    background-color: var(--button-hover-yellow);
+    color: var(--text-black);
+    box-shadow: 5px 5px var(--box-shadow-yellow);
+    cursor: pointer;
+}
+
+/*-------------------CSS for projects page-------------------*/
+#projects-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.projects {
+    border: 1px solid var(--text-white);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10vw;
+    padding: 5vw;
+    height: 15vw;
+    width: 15vw;
+}
+
+.projects:hover {
+    border-color: var(--button-hover-yellow);
+    color: var(--button-hover-yellow);
+    transform: scale(1.5);
+}
+
+#tic-tac-toe {
+    background-image: url('/Portfolio/projects/tic-tac-toe.jpg');
+    background-size: 100% 100%;
+}
+
+#hangman {
+    background-image: url('/Portfolio/projects/hangman.png');
+    background-size: 100% 100%;
+}
+
+p {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+/*-------------------CSS vars and keyframes-------------------*/
 :root {
     --background-gray: rgb(36, 36, 36);
+    --button-hover-yellow: rgb(192, 192, 36);
+    --container-background-gray: rgb(120, 120, 120);
+    --box-shadow-yellow: rgb(128, 128, 36);
     --text-white: rgb(216, 216, 216);
+    --text-black: rgb(32, 32, 32);
 }
 
 @keyframes fade {
@@ -132,4 +257,15 @@ footer {
     50% {transform: translateY(-1vh);}
     75% {transform: translateY(0vh);}
     100% {transform: translateY(-0.5vh);}
+}
+
+@keyframes modal-zoom-out {
+    from {
+        width: 0%;
+        height: 0%;
+    }
+    to {
+        width: 75%;
+        height: 75%;
+    }
 }

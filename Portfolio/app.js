@@ -1,3 +1,5 @@
+//for about me carousel
+
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 let slides = document.getElementsByClassName('slides');
@@ -39,3 +41,4 @@ function showSlides(index) {
     //current slide is displayed
     slides[slideIndex - 1].style.display = "block";
 }
+
