@@ -28,6 +28,18 @@ allContainers.addEventListener('click', function (evt) {
     } else if (btn === 'bottom-right-btn') {
         allModals.style.display = 'block';
         bottomRightModal.style.display = 'block';
+        let clientCount = Number(document.getElementById('client-count').innerText)
+        console.log(clientCount);
+        let count = 0;
+        let timeout;
+        countUp();
+        function countUp() {
+            document.getElementById('client-count').innerText = count;
+            if (count < clientCount) {
+                count++;
+                timeout = setTimeout(countUp, 5);
+            }
+        }
     }
 });
 

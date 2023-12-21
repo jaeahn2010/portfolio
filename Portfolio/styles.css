@@ -181,6 +181,31 @@ footer {
 
 #top-left-modal, #top-right-modal, #middle-modal, #bottom-left-modal, #bottom-right-modal {
     display: none;
+    text-align: center;
+}
+
+#bottom-left-modal div {
+    border: 1px solid white;
+    text-align: center;
+}
+
+#bottom-left-modal div p {
+    box-sizing: border-box;
+    margin: 10px 30px;
+    width: auto;
+    text-align: center;
+}
+
+#bottom-left-modal div img, #bottom-right-modal div img {
+    border: 1px solid white;
+    border-radius: 15px;
+    margin: 20px;
+    height: 20vw;
+    width: auto;
+}
+
+#bottom-left-modal div img:hover, #bottom-right-modal div img:hover {
+    transform: scale(2);
 }
 
 #modal-close-btn {
