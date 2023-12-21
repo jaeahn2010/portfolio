@@ -226,12 +226,12 @@ footer {
 }
 
 #tic-tac-toe {
-    background-image: url('/Portfolio/projects/tic-tac-toe.jpg');
+    background-image: url('projects/tic-tac-toe.jpg');
     background-size: 100% 100%;
 }
 
 #hangman {
-    background-image: url('/Portfolio/projects/hangman.png');
+    background-image: url('projects/hangman.png');
     background-size: 100% 100%;
 }
 
