@@ -121,22 +121,27 @@ footer {
 
 /*-------------------CSS for resume page-------------------*/
 #top-container {
-    border-style: solid;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 #top-left-btn, #top-right-btn, #bottom-left-btn, #bottom-right-btn {
     background-color: var(--container-background-gray);
     border-style: solid;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 3vw;
     margin: 3vw;
+    width: 30vw;
     text-align: center;
 }
 
 #middle-container {
     background-color: var(--container-background-gray);
     border-style: solid;
+    border-radius: 20px;
     line-height: 2.5;
     margin: 3vw;
     padding: 3vw 20vw;
@@ -151,9 +156,8 @@ footer {
 }
 
 #bottom-container {
-    border-style: solid;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 #all-modals {
@@ -175,7 +179,7 @@ footer {
     z-index: 1;
 }
 
-#top-left-modal, #top-right-modal, #bottom-left-modal, #bottom-right-modal {
+#top-left-modal, #top-right-modal, #middle-modal, #bottom-left-modal, #bottom-right-modal {
     display: none;
 }
 
@@ -261,11 +265,9 @@ p {
 
 @keyframes modal-zoom-out {
     from {
-        width: 0%;
-        height: 0%;
+        transform: scale(0);
     }
     to {
-        width: 75%;
-        height: 75%;
+        transform: scale(1);
     }
 }

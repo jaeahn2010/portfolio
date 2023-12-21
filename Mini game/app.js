@@ -1,7 +1,6 @@
 /*
-stretch idea 1: make choice for 3x3, 4x4, and 5x5 boards
-srretch idea 2: enable undo move
-stretch idea 3: make computer 'smarter' by analyzing what move will be advantageous
+srretch idea 1: enable undo move
+stretch idea 2: make computer 'smarter' by analyzing what move will be advantageous
 
 load modal #1 w/ welcome message w/ close button
     close modal when user presses close
@@ -53,25 +52,19 @@ function cssSelect(selector) {
 
 //HTML elements to be put into cssSelect function
 const compFirst = cssSelect('#comp-first')
-const exit = cssSelect('#exit');
 const firstPlayModal = cssSelect('#first-play-modal');
 const gameboard = cssSelect('#gameboard');
-const homePage = cssSelect('#home-page');
 const msgBoard = cssSelect('#msg-board');
-const modeToggle = cssSelect('#mode-toggle');
 const moveChoice= cssSelect('.move-choice');
 const nameModal= cssSelect('#name-modal');
 const oBtn = cssSelect('#o-btn');
 const oxModal= cssSelect('#ox-modal');
-const playAgain = cssSelect('#play-again');
-const playAgainModal = cssSelect('#play-again-modal');
 const playBtn = cssSelect('#play-btn');
-const restart = cssSelect('#restart');
-const quitGame = cssSelect('#quit-game');
 const theGame = cssSelect('#the-game');
 const theMove = cssSelect('.the-move');
-const submitBtn = cssSelect('#submit-btn')
-const userFirst = cssSelect('#user-first')
+const roundNumber = cssSelect('#round-number');
+const submitBtn = cssSelect('#submit-btn');
+const userFirst = cssSelect('#user-first');
 const userName = cssSelect('#user-name');
 const welcomeModal= cssSelect('#welcome-modal');
 const xBtn = cssSelect('#x-btn');
@@ -84,6 +77,42 @@ const sq6 = cssSelect('#sq5');
 const sq7 = cssSelect('#sq6');
 const sq8 = cssSelect('#sq7');
 const sq9 = cssSelect('#sq8');
+
+const modeToggle = cssSelect('#mode-toggle');
+const restart = cssSelect('#restart');
+const homePage = cssSelect('#home-page');
+
+const winCount = cssSelect('#win-count');
+const tieCount = cssSelect('#tie-count');
+const lossCount = cssSelect('#loss-count');
+
+const playAgainModal = cssSelect('#play-again-modal');
+const playAgainBtn = cssSelect('#play-again-btn');
+const quitGameBtn = cssSelect('#quit-game-btn');
+
+let round = 0;
+let wins = 0;
+let ties = 0;
+let losses = 0;
+
+modeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    let mode = document.getElementById('mode-toggle').innerText;
+    if (mode === 'LIGHT MODE') {
+        mode = 'DARK MODE';
+    } else {
+        mode = 'LIGHT MODE';
+    }
+    document.getElementById('mode-toggle').innerText = mode;
+})
+
+restart.addEventListener('click', function () {
+    location.reload();
+});
+
+homePage.addEventListener('click', function () {
+    window.location.href = '../Portfolio/index.html';
+});
 
 playBtn.addEventListener('click', function () {
     welcomeModal.style.display = 'none';
@@ -99,6 +128,9 @@ submitBtn.addEventListener('click', function () {
 oxModal.addEventListener('click', function (evt) {
     if (evt.target.tagName !== 'IMG') return; //prevents user from clicking anywhere outside of buttons
     let userChoice = evt.target.id[0]; //grabs 'o' or 'x'
+    for (i = 0; i < 9; i++) {
+        (document.getElementsByTagName('td'))[i].innerText = i + 1;
+    }
     oxModal.style.display = 'none';
     firstPlayModal.style.display = 'block';
     toFirstPlayModal(userChoice);
@@ -114,15 +146,11 @@ function toFirstPlayModal(userChoice) {
     });
 }
 
-let round = 0;
-let winCount = 0;
-let tieCount = 0;
-let lossCount = 0;
+
 //use an array here to allow it to be spliced across functions
 let possibleMoves = [null, null, null, null, null, null, null, null, null];
 
 function mainGamePlay(userShape, whoseTurn) {
-    
     //set images
     if (userShape === 'o') {
         userImg = document.getElementById('o-btn');
@@ -168,12 +196,13 @@ function mainGamePlay(userShape, whoseTurn) {
             possibleMoves[moveIndex] = 'taken';
             //need to create new element in order for images to stay on squares
             let currentPlayerImg = document.createElement('img');
+            currentPlayerImg.classList.add('temp-img');
             if ((turnPass == 1 && userShape === 'o') || (turnPass == -1 && userShape === 'x')) {
                 currentPlayerImg.src = 'TTTo.png';
-                square.innerText = 'o';    
+                square.innerText = '';    
             } else if ((turnPass == -1 && userShape === 'o') || (turnPass == 1 && userShape === 'x')) {
                 currentPlayerImg.src = 'TTTx.png';
-                square.innerText = 'x';
+                square.innerText = '';
             }
             square.style.cursor = 'not-allowed';
             square.removeEventListener('click', fillSquare);
@@ -184,13 +213,13 @@ function mainGamePlay(userShape, whoseTurn) {
                 msgBoard.innerText = `The computer has selected square ${Number(moveIndex) + 1}.`
             }
             turnPass *= -1;
-            setTimeout(checkForWin(turnPass), 3000);
+            checkForWin(turnPass);
         } else {
             //display this message only for user
             if (turnPass == 1) {
                 msgBoard.innerText = 'This square is already taken. Please select another square.'
             }
-            setTimeout(makeMove(turnPass), 5000);
+            makeMove(turnPass);
         }
     }
 
@@ -213,21 +242,55 @@ function mainGamePlay(userShape, whoseTurn) {
     }
 
     function declareWinner(winner) {
-        winCount = Number(document.getElementById('win-count').innerText);
-        tieCount = Number(document.getElementById('tie-count').innerText);
-        lossCount = Number(document.getElementById('loss-count').innerText);
+        // winCount = Number(document.getElementById('win-count').innerText);
+        // tieCount = Number(document.getElementById('tie-count').innerText);
+        // lossCount = Number(document.getElementById('loss-count').innerText);
         if (winner === 'user') {
             msgBoard.innerText = 'Congratulations! You win!';
             gameboard.removeEventListener('click', fillSquare);
-            winCount++;
+            wins++;
+            winCount.innerText = wins;
+            setTimeout(nextRound, 5000);
         } else if (winner === 'tie') {
             msgBoard.innerText = 'It\'s a tie.';
             gameboard.removeEventListener('click', fillSquare);
-            tieCount++;
+            ties++;
+            setTimeout(nextRound, 5000);
+            tieCount.innerText = ties;
         } else if (winner === 'computer') {
             msgBoard.innerText = 'Too bad! You lose.';
             gameboard.removeEventListener('click', fillSquare);
-            lossCount++;
+            losses++;
+            lossCount.innerText = losses;
+            setTimeout(nextRound, 5000);
         }
+    }
+    
+    function nextRound () {
+        theGame.style.display = 'none';
+        playAgainModal.style.display = 'block';
+        playAgainBtn.addEventListener('click', function () {
+            possibleMoves = [null, null, null, null, null, null, null, null, null];
+            round++;
+            roundNumber.innerText = round;
+            const eraseBoard = document.getElementsByClassName('temp-img');
+            while (eraseBoard.length > 0) {
+                eraseBoard[0].parentNode.removeChild(eraseBoard[0]);
+            }
+            const squares = document.getElementsByTagName('td');
+            console.log(squares); //prints 1 array, then 3, then 6, then 9...why?
+            for (i = 0; i < squares.length; i++) {
+                squares[i].style.cursor = 'pointer';
+            }
+            playAgainModal.style.display = 'none';
+            oxModal.style.display = 'block';
+            
+        })
+        quitGameBtn.addEventListener('click', function () {
+            if (confirm('Are you sure you would like to quit the game?')) {
+                alert('You will now be redirected to the home page.');
+                window.location.href = '../Portfolio/index.html';
+            }
+        })
     }
 }

@@ -134,6 +134,14 @@ button:hover, #submit-btn:hover, .move-choice:hover {
     background-color: green;
 }
 
+.light-mode {
+    background-color: white;
+    color: black;
+}
+.light-mode #gameboard, .light-mode tr, .light-mode td {
+    border-color: black;
+}
+
 :root {
     --button-gray: rgba(100,100,100);
     --modal-gray: rgba(210,210,210);
