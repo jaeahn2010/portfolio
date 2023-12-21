@@ -289,7 +289,7 @@ function mainGamePlay(userShape, whoseTurn) {
         quitGameBtn.addEventListener('click', function () {
             if (confirm('Are you sure you would like to quit the game?')) {
                 alert('You will now be redirected to the home page.');
-                window.location.href = '../Portfolio/index.html';
+                window.location.href = '../index.html';
             }
         })
     }
