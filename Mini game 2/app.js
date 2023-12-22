@@ -9,6 +9,9 @@ const householdItems = ['armchair', 'blanket', 'blinds', 'bookshelf', 'cabinet',
 const randomWords = ['antithesis', 'auspicious', 'belligerent', 'bureaucracy', 'cantankerous', 'capricious', 'destructive', 'dynasty', 'egotistical', 'entrepreneur', 'fantastic', 'ferocious', 'gibberish', 'guerrilla', 'handkerchief', 'hostile', 'imagery', 'indescribable', 'jaundice', 'jokester', 'kerosene', 'killer', 'langhingstock', 'luminous', 'malicious', 'mnemonics', 'nefarious', 'nymphoid', 'oblivion', 'orderly', 'pandemonium', 'pyrotechnics','quash', 'quirky', 'rambunctious', 'rhythmic', 'sanctimonious', 'splurge', 'threnody', 'tyranny', 'ubiquitous', 'uniqueness', 'vacancy', 'voluminous', 'wayfarer', 'wholesome', 'xenophobic', 'xylophone', 'yesterday', 'yonder', 'zealous', 'zygote'];
 
 //query selectors
+const restart = document.getElementById('restart');
+const homePage = document.getElementById('home-page');
+
 const categoryModal = document.getElementById('category-modal');
 const difficultyModal = document.getElementById('difficulty-modal');
 const setup = document.getElementById('setup');
@@ -41,6 +44,13 @@ const rightEye = document.getElementById('right-eye');
 const nose = document.getElementById('nose');
 const mouth = document.getElementById('mouth');
 
+restart.addEventListener('click', function () {
+    location.reload();
+});
+
+homePage.addEventListener('click', function () {
+    window.location.href = '../index.html';
+});
 
 //category modal
 categoryModal.addEventListener('click', function (evt) {
@@ -196,6 +206,7 @@ function playGame(wordBank, level) {
                 location.reload();
             } else {
                 alert('You will now be redirected to the home page.');
+                window.location.href = '../index.html';
             }
         }
     });

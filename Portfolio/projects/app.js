@@ -1,12 +1,13 @@
-const projects = document.getElementsByClassName('projects');
+const projectsContainer = document.getElementById('projects-container');
 const ticTacToe = document.getElementById('tic-tac-toe');
 const hangman = document.getElementById('hangman');
 
-ticTacToe.addEventListener('click', function (evt) {
+projectsContainer.addEventListener('click', function (evt) {
     let project = evt.target.id;
+    console.log(project);
     if (project === 'tic-tac-toe') {
-        window.location.assign('../../Mini game/index.html');
+        window.location.assign('../../Mini game 1/index.html');
     } else if (project === 'hangman') {
-        console.log('under construction');
+        window.location.assign('../../Mini game 2/index.html');
     }
 });
