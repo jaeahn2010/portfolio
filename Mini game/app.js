@@ -227,7 +227,10 @@ function mainGamePlay(userShape, whoseTurn) {
 
             //switch player & check if anyone won
             turnPass *= -1;
-            checkForWin(turnPass);
+            //checkForWin(turnPass);
+            setTimeout(function() {
+                checkForWin(turnPass);
+            }, 1500);
 
             //if the cell is already taken, try again
         } else {
@@ -291,6 +294,7 @@ function mainGamePlay(userShape, whoseTurn) {
             }
             playAgainModal.style.display = 'none';
             theGame.style.display = 'block';
+            console.log(userShape, whoseTurn); //returns 1, 3, 6, 10, 15 iterations...
             mainGamePlay(userShape, whoseTurn);
         })
         quitGameBtn.addEventListener('click', function () {
