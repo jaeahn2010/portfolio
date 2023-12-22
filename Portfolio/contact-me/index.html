@@ -5,9 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me</title>
     <link href="../styles.css" rel="stylesheet">
-    <script src="../app.js" defer></script>
+    <script src="/app.js" defer></script>
 </head>
 <body>
-    
+    <nav>
+        <a href="../../index.html">Main Page</a>
+        <a href="../bio/index.html">About Me</a>
+        <a href="../resume/index.html">Resume</a>
+        <a href="../projects/index.html">Projects</a>
+        <a href="index.html">Contact Me</a>
+    </nav>
+    <div>
+        <h3>Any questions? Please fill out the form below to contact me directly.</h3>
+        <form id="submittable" action="/action_page.php">
+            <label for="first-name">First name: <span>*</span></label>
+            <br />
+            <input type="text" id="first-name" name="first-name">
+            <br />
+            <label for="last-name">Last name: <span>*</span></label>
+            <br />
+            <input type="text" id="last-name" name="last-name">
+            <br />
+            <label for="phone">Phone: <span>*</span></label>
+            <br />
+            <input type="text" id="phone" name="phone">
+            <br />
+            <label for="email">Email:</label>
+            <br />
+            <input type="text" id="email" name="email">
+            <br />
+            <div>
+                <p>Which service are you inquiring about?</p>
+                <input type="radio" name="service" value="Software engineering">
+                <label for="software-engineering">Software engineering</label>
+                <br />
+                <input type="radio" name="service" value="Real estate">
+                <label for="real-estate">Real estate</label>
+                <br />
+                <input type="radio" name="service" value="Music">
+                <label for="music">Music</label>
+                <br />
+            </div>
+            <label id='inquiry-label' for="inquiry">Your inquiry:</label>
+            <br />
+            <textarea id="inquiry" name="inquiry" row="10" cols="50"></textarea>
+            <br />
+            <div id="submit-area">
+                <input id='submit-btn' type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
 </body>
 </html>

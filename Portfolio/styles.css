@@ -260,9 +260,47 @@ footer {
     background-size: 100% 100%;
 }
 
-p {
+.projects p {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
+}
+/*-------------------CSS for contact me page-------------------*/
+#submittable {
+    margin: 0 0 0 5vw;
+}
+
+#submittable div {
+    margin: 2vh 0 5vh 0;
+}
+
+h3 {
+    padding: 3vh;
+}
+
+#first-name, #last-name, #phone, #email, #inquiry {
+    margin: 0 0 20px 0;
+    width: 75%;
+}
+
+label {
+    padding: 2px;
+}
+
+label span {
+    color: rgb(147, 58, 58);
+    font-size: 20px;
+}
+
+#submit-btn {
+    background-color: rgb(70, 152, 247);
+    border-style: solid;
+    border-radius: 5px;
+    text-align: center;
+    width: 55px;
+}
+
+#submit-area {
+    text-align: center;
 }
 
 /*-------------------CSS vars and keyframes-------------------*/
