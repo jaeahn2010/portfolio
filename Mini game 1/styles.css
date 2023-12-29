@@ -15,11 +15,7 @@ body {
     width: 600px; /*keep absolute unit here*/
 }
 
-p {
-    text-align: center;
-}
-
-th {
+p, th {
     text-align: center;
 }
 
@@ -37,28 +33,19 @@ td {
     width: 200px; /*keep absolute unit here*/
 }
 
+td:hover {
+    background-color: var(--hover-green);
+}
+
 img {
     width: 150px; /*keep absolute unit here*/
 }
 
-td:hover {
-    background-color: green;
-}
-
-#welcome-modal {
+#welcome-modal, #name-modal, #first-play-modal, #ox-modal, #play-again-modal {
     background-color: var(--modal-gray);
-    border-style: none;
+    border: 5px solid var(--modal-text-white);
     border-radius: 20px;
-    font-family: 'Chalkduster', 'fantasy';
-    margin: 25vh;
-    padding: 2vh;
-    text-align: center;
-}
-
-#name-modal {
-    background-color: var(--modal-gray);
-    border-style: none;
-    border-radius: 20px;
+    color: var(--modal-text-white);
     display: none;
     font-family: 'Chalkduster', 'fantasy';
     margin: 25vh;
@@ -66,37 +53,8 @@ td:hover {
     text-align: center;
 }
 
-#ox-modal { /* only one slightly different */
-    background-color: var(--modal-gray);
-    border-style: none;
-    border-radius: 20px;
-    display: none;
-    font-family: 'Chalkduster', 'fantasy';
+#ox-modal { /* only modal slightly different */
     margin: 15vh 0;
-    padding: 2vh;
-    text-align: center;
-}
-
-#first-play-modal {
-    background-color: var(--modal-gray);
-    border-style: none;
-    border-radius: 20px;
-    display: none;
-    font-family: 'Chalkduster', 'fantasy';
-    margin: 25vh;
-    padding: 2vh;
-    text-align: center;
-}
-
-#play-again-modal {
-    background-color: var(--modal-gray);
-    border-style: none;
-    border-radius: 20px;
-    display: none;
-    font-family: 'Chalkduster', 'fantasy';
-    margin: 25vh;
-    padding: 2vh;
-    text-align: center;
 }
 
 #the-game {
@@ -132,7 +90,7 @@ button, #submit-btn {
 }
 
 button:hover, #submit-btn:hover, .move-choice:hover {
-    background-color: green;
+    background-color: var(--hover-green);
 }
 
 .light-mode {
@@ -145,5 +103,7 @@ button:hover, #submit-btn:hover, .move-choice:hover {
 
 :root {
     --button-gray: rgba(100,100,100);
-    --modal-gray: rgba(210,210,210);
+    --modal-gray: rgb(150,150,150);
+    --modal-text-white: rgb(240,240,240);
+    --hover-green: rgb(0,175,0);
 }
