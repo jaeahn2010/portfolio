@@ -1,6 +1,4 @@
 /*
-restart round (do NOT reload, but just reset moves)
-quit game and exit (alert box 'are you sure?' y: close page, n: close alert)
 once winner determined,
     w/ anim, draw oval around winning line, then flash complete oval few times
     update msg box to disp same thing
@@ -95,27 +93,26 @@ submitBtn.addEventListener('click', () => {
     document.getElementById('user-name').innerText = userInput;
     nameModal.style.display = 'none';
     oxModal.style.display = 'block';
-});
+}); 
+let userChoice = '';
 oxModal.addEventListener('click', (evt) => {
     if (evt.target.tagName !== 'IMG') return; //prevents user from clicking anywhere outside of buttons
-    let userChoice = evt.target.id[0]; //grabs 'o' or 'x'
+    userChoice = evt.target.id[0]; //grabs 'o' or 'x'
     for (i = 0; i < 9; i++) {
         (document.getElementsByTagName('td'))[i].innerText = i + 1;
     }
     oxModal.style.display = 'none';
     firstPlayModal.style.display = 'block';
-    toFirstPlayModal(userChoice);
-});
-
-function toFirstPlayModal(userChoice) {
     firstPlayModal.addEventListener('click', (evt) => {
+        alert('user chose ' + userChoice);
+        evt.stopImmediatePropagation();
         if (evt.target.tagName !== 'BUTTON') return;
         let userGoesFirst = evt.target.id; //grabs 'user-first' or 'comp-first'
         firstPlayModal.style.display = 'none';
         theGame.style.display = 'block';
         mainGamePlay(userChoice, userGoesFirst);
     });
-}
+});
 
 function mainGamePlay(userShape, whoseTurn) {
     //display round number
@@ -252,9 +249,9 @@ function nextRound() {
         }
         playAgainModal.style.display = 'none';
         oxModal.style.display = 'block';
-        console.log(gameboard); //still one event listener being triggered 1 additional time each round
     });
-    quitGameBtn.addEventListener('click', () => {
+    quitGameBtn.addEventListener('click', (evt) => {
+        evt.stopImmediatePropagation();
         if (confirm('Are you sure you would like to quit the game?')) {
             alert('You will now be redirected to the home page.');
             window.location.href = '../index.html';
