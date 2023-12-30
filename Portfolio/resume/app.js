@@ -11,25 +11,25 @@ const bottomLeftModal = document.getElementById('bottom-left-modal');
 const bottomRightModal = document.getElementById('bottom-right-modal');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 
-allContainers.addEventListener('click', function (evt) {
+allContainers.addEventListener('click', (evt) => {
     let btn = evt.target.id;
+    allModals.style.display = 'flex';
+    topLeftModal.style.display = 'none';
+    topRightModal.style.display = 'none';
+    middleModal.style.display = 'none';
+    bottomLeftModal.style.display = 'none';
+    bottomRightModal.style.display = 'none';
     if (btn === 'top-left-btn') {
-        allModals.style.display = 'flex';
         topLeftModal.style.display = 'block';
     } else if (btn === 'top-right-btn') {
-        allModals.style.display = 'block';
         topRightModal.style.display = 'block';
     } else if (btn === 'middle-container') {
-        allModals.style.display = 'block';
         middleModal.style.display = 'block';
     } else if (btn === 'bottom-left-btn') {
-        allModals.style.display = 'block';
         bottomLeftModal.style.display = 'block';
     } else if (btn === 'bottom-right-btn') {
-        allModals.style.display = 'block';
         bottomRightModal.style.display = 'block';
         let clientCount = Number(document.getElementById('client-count').innerText)
-        console.log(clientCount);
         let count = 0;
         let timeout;
         countUp();

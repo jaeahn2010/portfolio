@@ -11,7 +11,7 @@ nav {
     text-align: center;
 }
 a {
-    margin: 1vw;
+    margin: 0.5vw;
 }
 a:link {
     color: var(--text-white);
@@ -254,6 +254,9 @@ h3 {
     margin: 0 0 20px 0;
     width: 75%;
 }
+#inquiry {
+    height: 200px;
+}
 label {
     padding: 2px;
 }
@@ -262,11 +265,18 @@ label span {
     font-size: 20px;
 }
 #submit-btn {
-    background-color: rgb(70, 152, 247);
+    background-color: var(--container-background-gray);
     border-style: solid;
-    border-radius: 5px;
+    border-radius: 10px;
+    color: var(--text-white);
+    padding: 5px;
     text-align: center;
     width: 55px;
+}
+#submit-btn:hover {
+    background-color: var(--button-hover-yellow);
+    color: var(--text-black);
+    cursor: pointer;
 }
 #submit-area {
     text-align: center;
