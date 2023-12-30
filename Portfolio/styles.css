@@ -1,50 +1,37 @@
-/*-------------------CSS media queries-------------------*/
-@media screen and (min-width: 1080px) {
-    #main-heading {font-size: 36px;}
-    #welcome {font-size: 30px;}
-}
-
-/*-------------------CSS for all pages-------------------*/
+/*-------------------all-------------------*/
 body {
     animation-name: fade;
     animation-duration: 5s;
     background-color: var(--background-gray);
     color: var(--text-white);
-    font-family: Luminari, fantasy;
+    font-family: "Optima", sans-serif;
 }
-
 nav {
     color: var(--text-white);
     text-align: center;
 }
-
 a {
-    margin: 3vw;
+    margin: 1vw;
 }
-
 a:link {
     color: var(--text-white);
 }
-
 a:visited {
     color: rgb(216, 216, 0);
 }
-
 a:hover {
     color: rgb(0, 255, 255);
 }
-
 .main-heading {
-    padding-top: 10vh;
+    padding-top: 5vh;
+    font-size: 20px;
     text-align: center;
 }
-
 footer {
     color: var(--text-white);
     text-align: center;
 }
-
-/*-------------------CSS for main page-------------------*/
+/*-------------------main-------------------*/
 #headshot {
     border-style: none;
     border-radius: 50px;
@@ -52,34 +39,31 @@ footer {
     padding: 25px;
     width: 25%;
 }
-
 #welcome {
     display: flex;
     align-items: center;
-    line-height: 2.5;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-right: 15px;
+    text-align: justify;
 }
-
 .social-media {
     cursor: pointer;
-    padding-top: 10vh;
+    padding-top: 3vh;
     margin: 5vw;
-    width: 5vw;
+    width: 10vw;
 }
-
 .social-media:hover {
     animation: shake 1.5s ease-in 0s infinite;
-
 }
-
-/*-------------------CSS for bio page-------------------*/
+/*-------------------bio-------------------*/
 #bio {
-    line-height: 2.5;
+    line-height: 1.5;
     padding: 10vw;
     text-align: justify;
 }
-
 .slideshow {
-    max-width: 1000px;
+    max-width: 750px;
     position: relative;
     margin: auto;
 }
@@ -90,8 +74,10 @@ footer {
 }
 
 .slides img {
-    padding: 25px;
-    width: 50%;
+    animation: fade 1.5s;
+    padding: 15px;
+    height: 30vh;
+    width: auto;
 }
 
 #prev-btn, #next-btn {
@@ -105,21 +91,18 @@ footer {
     padding: 16px;
     position: absolute;
     top: 50%;
-    transition: 0.6s ease;
+    transition: 1s ease;
     user-select: none;
     width: auto;
 }
-
 #prev-btn:hover, #next-btn:hover {
     background-color: rgba(0, 0, 0, 0.5);
 }
-
 #next-btn {
     right: 0;
     border-radius: 3px 0 0 3px;
 }
-
-/*-------------------CSS for resume page-------------------*/
+/*-------------------resume-------------------*/
 #top-container {
     display: flex;
     justify-content: space-evenly;
@@ -144,7 +127,7 @@ footer {
     border-radius: 20px;
     line-height: 2.5;
     margin: 3vw;
-    padding: 3vw 20vw;
+    padding: 3vw 5vw;
     text-align: center;
 }
 
@@ -162,25 +145,24 @@ footer {
 
 #all-modals {
     animation: modal-zoom-out 0.5s ease-in 0s 1;
+    background-color: rgba(0, 0, 0, 0.9);
     border: 1px solid white;
     border-radius: 20px;
     display: none;
     flex-direction: column;
-    left: 0;
-    top: 0;
-    line-height: 2.5;
+    line-height: 2;
+    margin: 5vw;
+    overflow: auto;
+    padding: 5vw;
     position: fixed;
+    text-align: justify;
+    top: 0;
     width: 75%;
     height: 75%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 5vw;
-    margin: 5vw;
     z-index: 1;
 }
 
-#top-left-modal, #top-right-modal, #middle-modal, #bottom-left-modal, #bottom-right-modal {
-    display: none;
+#bottom-left-modal, #bottom-right-modal {
     text-align: center;
 }
 
@@ -200,97 +182,85 @@ footer {
     border: 1px solid white;
     border-radius: 15px;
     margin: 20px;
-    height: 20vw;
+    height: 30vw;
     width: auto;
 }
 
 #bottom-left-modal div img:hover, #bottom-right-modal div img:hover {
-    transform: scale(2);
+    transform: scale(1.5);
 }
-
 #modal-close-btn {
     background-color: var(--container-background-gray);
     border: 1px solid white;
     border-radius: 10px;
     cursor: pointer;
+    font-size: 14px;
     margin: 5vw 0 5vw 30vw;
     text-align: center;
     width: 15%;
 }
-
 #modal-close-btn:hover {
     background-color: var(--button-hover-yellow);
     color: var(--text-black);
     box-shadow: 5px 5px var(--box-shadow-yellow);
     cursor: pointer;
 }
-
-/*-------------------CSS for projects page-------------------*/
+/*-------------------projects-------------------*/
 #projects-container {
     display: flex;
     justify-content: space-evenly;
 }
-
 .projects {
     border: 1px solid var(--text-white);
     border-radius: 10px;
     cursor: pointer;
     display: flex;
+    font-size: 12px;
     justify-content: center;
     align-items: center;
-    margin: 10vw;
-    padding: 5vw;
-    height: 15vw;
-    width: 15vw;
+    margin: 5vw 5vw;
+    padding: 2vw;
+    height: 25vw;
+    width: 25vw;
 }
-
 .projects:hover {
     border-color: var(--button-hover-yellow);
     color: var(--button-hover-yellow);
     transform: scale(1.5);
 }
-
 #tic-tac-toe {
     background-image: url('projects/tic-tac-toe.jpg');
     background-size: 100% 100%;
 }
-
 #hangman {
     background-image: url('projects/hangman.png');
     background-size: 100% 100%;
 }
-
 .projects p {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
 }
-/*-------------------CSS for contact me page-------------------*/
+/*-------------------contact me-------------------*/
 #submittable {
     margin: 0 0 0 5vw;
 }
-
 #submittable div {
     margin: 2vh 0 5vh 0;
 }
-
 h3 {
     padding: 3vh;
 }
-
 #first-name, #last-name, #phone, #email, #inquiry {
     margin: 0 0 20px 0;
     width: 75%;
 }
-
 label {
     padding: 2px;
 }
-
 label span {
     color: rgb(147, 58, 58);
     font-size: 20px;
 }
-
 #submit-btn {
     background-color: rgb(70, 152, 247);
     border-style: solid;
@@ -298,12 +268,10 @@ label span {
     text-align: center;
     width: 55px;
 }
-
 #submit-area {
     text-align: center;
 }
-
-/*-------------------CSS vars and keyframes-------------------*/
+/*-------------------vars & keyframes-------------------*/
 :root {
     --background-gray: rgb(36, 36, 36);
     --button-hover-yellow: rgb(192, 192, 36);
@@ -312,12 +280,10 @@ label span {
     --text-white: rgb(216, 216, 216);
     --text-black: rgb(32, 32, 32);
 }
-
 @keyframes fade {
     from {opacity: 0}
     to {opacity: 100}
 }
-
 @keyframes shake {
     0% {transform: translateY(-2vh);}
     25% {transform: translateY(0vh);}
@@ -325,7 +291,6 @@ label span {
     75% {transform: translateY(0vh);}
     100% {transform: translateY(-0.5vh);}
 }
-
 @keyframes modal-zoom-out {
     from {
         transform: scale(0);
@@ -333,4 +298,11 @@ label span {
     to {
         transform: scale(1);
     }
+}
+/*-------------------media queries-------------------*/
+@media screen and (min-width: 600px) {
+    nav {font-size: 12px;}
+    .main-heading {font-size: 18px;}
+    #welcome {font-size: 12px; line-height: 1;}
+    #bio {font-size: 14px;}
 }

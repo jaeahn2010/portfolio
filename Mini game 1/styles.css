@@ -1,46 +1,12 @@
 body {
     background-color: black;
-    color: white;
+    color: var(--modal-text-white);
+    font-family: 'Chalkduster', 'fantasy';
+    text-align: center;
     display: flex;
     flex-direction: column;
-    font-family: 'Courier New', Courier, monospace;
     align-items: center;
 }
-
-#gameboard {
-    border-style: solid;
-    border-color: white;
-    text-align: center;
-    height: 600px; /*keep absolute unit here*/
-    width: 600px; /*keep absolute unit here*/
-}
-
-p, th {
-    text-align: center;
-}
-
-tr {
-    border-style: solid;
-    border-color: white;
-    height: 200px; /*keep absolute unit here*/
-}
-
-td {
-    border-style: solid;
-    border-color: white;
-    cursor: pointer;
-    height: 200px; /*keep absolute unit here*/
-    width: 200px; /*keep absolute unit here*/
-}
-
-td:hover {
-    background-color: var(--hover-green);
-}
-
-img {
-    width: 150px; /*keep absolute unit here*/
-}
-
 #welcome-modal, #name-modal, #first-play-modal, #ox-modal, #play-again-modal {
     background-color: var(--modal-gray);
     border: 5px solid var(--modal-text-white);
@@ -48,59 +14,96 @@ img {
     color: var(--modal-text-white);
     display: none;
     font-family: 'Chalkduster', 'fantasy';
-    margin: 25vh;
+    margin: 10vh 0;
     padding: 2vh;
     text-align: center;
+    width: 60%;
 }
-
-#ox-modal { /* only modal slightly different */
-    margin: 15vh 0;
-}
-
-#the-game {
-    display: none;
-    padding: 20vh;
-    text-align: center;
-}
-
 .move-choice {
     background-color: var(--button-gray);
     border-style: solid;
-    border-color: white;
+    border-color: var(--modal-text-white);
     border-radius: 20%;
     border-width: 2px;
     cursor: pointer;
     margin: 5vw;
+    width: 75px;
+}
+#the-game {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#the-game div, #the-game h3 {
+    text-align: center;
+}
+#gameboard {
+    border-style: solid;
+    border-color: var(--modal-text-white);
+    height: 300px;
+    width: 300px;
+    text-align: center;
+}
+#round-board, #stats-board {
+    margin: 10px;
+    padding: 0 15px;
+}
+#stats-board {
+    display: flex;
+    justify-content: space-around;
+}
+#stats-board h3 {
+    border: 2px solid var(--modal-text-white);
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px 10px 0 10px;
+    width: 25%;
+}
+#stats-board h3 p {
+    margin: 0;
+}
+#win-box {background-color: rgb(32, 128, 32);}
+#tie-box {background-color: rgb(166, 166, 40);}
+#loss-box {background-color: rgb(173, 2, 2)}
+td {
+    border-style: solid;
+    border-color: var(--modal-text-white);
+    cursor: pointer;
+    width: 33.33%;
+    height: 33.33%;
+}
+td:hover {
+    background-color: var(--hover-green);
+}
+.move-img {
+    width: 50px;
 }
 
 footer {
     display: flex;
     gap: 15px;
-    margin: 5vw;
+    margin: 5vh 0;
 }
-
 button, #submit-btn {
     background-color: var(--button-gray);
     border-style: solid;
-    border-color: white;
+    border-color: var(--modal-text-white);
     border-radius: 2vh;
-    color: white;
+    color: var(--modal-text-white);
     cursor: pointer;
     padding: 10px;
 }
-
 button:hover, #submit-btn:hover, .move-choice:hover {
     background-color: var(--hover-green);
 }
-
 .light-mode {
-    background-color: white;
+    background-color: var(--modal-text-white);
     color: black;
 }
 .light-mode #gameboard, .light-mode tr, .light-mode td {
     border-color: black;
 }
-
 :root {
     --button-gray: rgba(100,100,100);
     --modal-gray: rgb(150,150,150);

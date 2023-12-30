@@ -90,6 +90,7 @@ playBtn.addEventListener('click', () => {
 });
 submitBtn.addEventListener('click', () => {
     userInput = document.getElementById('user-input').value;
+    if (userInput === '') userInput = 'User';
     document.getElementById('user-name').innerText = userInput;
     nameModal.style.display = 'none';
     oxModal.style.display = 'block';
@@ -104,12 +105,11 @@ oxModal.addEventListener('click', (evt) => {
     oxModal.style.display = 'none';
     firstPlayModal.style.display = 'block';
     firstPlayModal.addEventListener('click', (evt) => {
-        alert('user chose ' + userChoice);
         evt.stopImmediatePropagation();
         if (evt.target.tagName !== 'BUTTON') return;
         let userGoesFirst = evt.target.id; //grabs 'user-first' or 'comp-first'
         firstPlayModal.style.display = 'none';
-        theGame.style.display = 'block';
+        theGame.style.display = 'flex';
         mainGamePlay(userChoice, userGoesFirst);
     });
 });
@@ -157,7 +157,7 @@ function mainGamePlay(userShape, whoseTurn) {
         if (possibleMoves[moveIndex] !== 'taken') {
             possibleMoves[moveIndex] = 'taken';
             let currentPlayerImg = document.createElement('img'); //need to create new element in order for images to stay on squares
-
+            currentPlayerImg.className = 'move-img';
             //assign appropriate img based on chosen user shape & turn
             if ((turnPass == 1 && userShape === 'o') || (turnPass == -1 && userShape === 'x')) {
                 currentPlayerImg.src = 'TTTo.png';
