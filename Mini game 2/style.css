@@ -1,7 +1,7 @@
 /*---------general---------*/
 * {
     background-color: rgb(225, 225, 225);
-    font-family: "Apple Chancery", cursive;
+    font-family: "Optima", sans-serif;
 }
 
 #title {
@@ -216,16 +216,16 @@ body {
 
 .letter {
     display: flex;
-    border-bottom: 5px solid black;
-    margin: 10px;
-    width: 50px;
+    border-bottom: 3px solid black;
+    margin: 5px;
+    width: 20px;
     justify-content: center;
 }
 
 /*---------qwerty keyboard---------*/
 #qwerty-keyboard {
     border: 3px solid black;
-    width: 500px;
+    width: 300px;
     padding: 10px;
     display: none;
     text-align: center;
@@ -233,10 +233,12 @@ body {
 
 #qwerty-keyboard div p {
     border: 1px solid black;
-    width: 20px;
-    height: 20px;
-    padding: 10px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 8px;
 }
 
 #qwerty-keyboard div p:hover {
@@ -249,7 +251,7 @@ body {
 #row-1, #row-2, #row-3 {
     display: flex;
     justify-content: space-evenly;
-    padding: 10px;
+    padding: 1px;
 }
 
 /*---------word guess input box---------*/
@@ -260,7 +262,19 @@ body {
 #guess-word {
     border: 3px solid black;
 }
+
+#word-submit {
+    border: 2px solid black;
+    border-radius: 20px;
+    color: black;
+}
+#word-submit:hover {
+    background-color: rgb(192, 192, 0);
+    cursor: pointer;
+    box-shadow: 5px 5px;
+}
+
 /*---------CSS vars---------*/
 :root {
-    --setup-height: 320px;
+    --setup-height: 240px;
 }

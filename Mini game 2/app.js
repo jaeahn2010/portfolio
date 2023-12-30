@@ -19,6 +19,7 @@ const wordGuess = document.getElementById('word-guess');
 const qwertyKeyboard = document.getElementById('qwerty-keyboard');
 const guessBox = document.getElementById('guess-box');
 const guessWord = document.getElementById('guess-word');
+const wordSubmit = document.getElementById('word-submit');
 
 const animalsBtn = document.getElementById('animals');
 const bodyPartsBtn = document.getElementById('body-parts');
@@ -133,12 +134,10 @@ function playGame(wordBank, level) {
         letter.classList.add('letter');
         letter.style.fontSize = '0px';
     }
-    console.log(targetWord);
 
     //wait for user to make guesses using the keyboard
     qwertyKeyboard.addEventListener('click', function(evt) {
         let userChoice = evt.target.id;
-        console.log(totalGuesses, wrongGuesses);
         if (evt.target.tagName !== 'P' || usedLetters.includes(userChoice)) return;
         if (targetWord.includes(userChoice)) {
             usedLetters.push(userChoice);
@@ -153,61 +152,78 @@ function playGame(wordBank, level) {
             }
         } else {
             wrongGuesses++;
-            switch(wrongGuesses) {
-                case 1:
-                    head.style.display = 'flex';
-                    break;
-                case 2:
-                    torso.style.display = 'block';
-                    break;
-                case 3:
-                    leftArm.style.display = 'block';
-                    break;
-                case 4:
-                    rightArm.style.display = 'block';
-                    break;
-                case 5:
-                    leftHand.style.display = 'block';
-                    break;
-                case 6:
-                    rightHand.style.display = 'block';
-                    break;
-                case 7:
-                    leftLeg.style.display = 'block';
-                    break;
-                case 8:
-                    rightLeg.style.display = 'block';
-                    break;
-                case 9:
-                    leftFoot.style.display = 'block';
-                    break;
-                case 10:
-                    rightFoot.style.display = 'block';
-                    break;
-                case 11:
-                    leftEye.style.display = 'block';
-                    break;
-                case 12:
-                    rightEye.style.display = 'block';
-                    break;
-                case 13:
-                    nose.style.display = 'block';
-                    break;
-                case 14:
-                    mouth.style.display = 'block';
-                    break;
-            }
         }
-        if (filledSpace === targetWord.length || guessWord.value === targetWord) {
+        if (wrongGuesses >= 1) {
+            head.style.display = 'flex';
+        }
+        if (wrongGuesses >= 2) {
+            torso.style.display = 'block';
+            leftArm.style.display = 'block';
+            leftArm.style.borderWidth = '0px';
+        }
+        if (wrongGuesses >= 3) {
+            leftArm.style.borderWidth = '1px';
+        }
+        if (wrongGuesses >= 4) {
+            rightArm.style.display = 'block';
+        }
+        if (wrongGuesses >= 5) {
+            leftLeg.style.display = 'block';
+        }
+        if (wrongGuesses >= 6) {
+            rightLeg.style.display = 'block';
+        }
+        if (wrongGuesses >= 7) {
+            leftHand.style.display = 'block';
+        }
+        if (wrongGuesses >= 8) {
+            rightHand.style.display = 'block';
+        }
+        if (wrongGuesses >= 9) {
+            leftFoot.style.display = 'block';
+        }
+        if (wrongGuesses >= 10) {
+            rightFoot.style.display = 'block';
+        }
+        if (wrongGuesses >= 11) {
+            leftEye.style.display = 'block';
+            rightEye.style.display = 'block';
+            rightEye.style.borderWidth = '0px';
+        }
+        if (wrongGuesses >= 12) {
+            rightEye.style.borderWidth = '1px';
+        }
+        if (wrongGuesses >= 13) {
+            nose.style.display = 'block';
+        }
+        if (wrongGuesses >= 14) {
+            mouth.style.display = 'block';
+        }
+        if (filledSpace === targetWord.length) {
             alert('You win!');
+            setTimeout(playAgain, 3000);
         } else if (wrongGuesses === totalGuesses) {
-            alert('You lose.');
-            if (confirm("Play again?") == true) {
-                location.reload();
-            } else {
-                alert('You will now be redirected to the home page.');
-                window.location.href = '../index.html';
-            }
+            alert(`You lose. The correct word is ${targetWord}`);
+            setTimeout(playAgain, 3000);
         }
     });
+
+    wordSubmit.addEventListener('click', () => {
+        if (guessWord.value.toLowerCase() === targetWord) {
+            alert('You guessed correctly. You win!');
+            setTimeout(playAgain, 1500);
+        } else {
+            alert('You guessed incorrectly. Try again.');
+        }
+        guessWord.value = '';
+    });
+}
+
+function playAgain () {
+    if (confirm("Play again?") == true) {
+        location.reload();
+    } else {
+        alert('You will now be redirected to the home page.');
+        window.location.href = '../index.html';
+    }
 }
