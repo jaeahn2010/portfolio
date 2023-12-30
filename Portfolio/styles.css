@@ -320,8 +320,14 @@ label span {
 }
 /*-------------------media queries-------------------*/
 @media screen and (min-width: 600px) {
-    nav {font-size: 12px;}
-    .main-heading {font-size: 18px;}
-    #welcome {font-size: 12px; line-height: 1;}
-    #bio {font-size: 14px;}
+    nav {font-size: 20px;}
+    a {margin: 2vw;}
+    .main-heading {font-size: 36px;}
+    #welcome {font-size: 18px; line-height: 2.5;}
+    #bio {font-size: 18px; line-height: 2;}
+    .slides img {height: 60vh; width: auto;}
+    #bottom-right-modal div img {height: 23vw;}
+    .projects {font-size: 18px;}
+    #first-name, #last-name, #email {width: 21%;}
+    #phone-1, #phone-2, #phone-3 {width: 5%;}
 }

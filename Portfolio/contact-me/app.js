@@ -34,7 +34,7 @@ submitBtn.addEventListener('click', () => {
     let topic = '';
     if (softwareEngineering.checked === true) topic = 'Software engineering';
     if (realEstate.checked === true) topic = 'Real estate';
-    if (music.checked === true) topic = 'music';
+    if (music.checked === true) topic = 'Music';
 
     theForm.style.display = 'none';
     tempOutput.style.display = 'block';
