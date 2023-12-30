@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me</title>
     <link href="../styles.css" rel="stylesheet">
-    <script src="/app.js" defer></script>
+    <script src="app.js" defer></script>
 </head>
 <body>
     <nav>
@@ -15,9 +15,9 @@
         <a href="../projects/index.html">Projects</a>
         <a href="index.html">Contact Me</a>
     </nav>
-    <div>
+    <div id="the-form">
         <h3>Any questions? Please fill out the form below to contact me directly.</h3>
-        <form id="submittable" action="/action_page.php">
+        <div id="submittable">
             <label for="first-name">First name: <span>*</span></label>
             <br />
             <input type="text" id="first-name" name="first-name">
@@ -28,7 +28,9 @@
             <br />
             <label for="phone">Phone: <span>*</span></label>
             <br />
-            <input type="text" id="phone" name="phone">
+            <input type="text" id="phone-1" name="phone-1"> -
+            <input type="text" id="phone-2" name="phone-2"> -
+            <input type="text" id="phone-3" name="phone-3">
             <br />
             <label for="email">Email:</label>
             <br />
@@ -36,13 +38,13 @@
             <br />
             <div>
                 <p>Which service are you inquiring about?</p>
-                <input type="radio" name="service" value="Software engineering">
+                <input type="radio" name="service" id="software-engineering" value="Software engineering">
                 <label for="software-engineering">Software engineering</label>
                 <br />
-                <input type="radio" name="service" value="Real estate">
+                <input type="radio" name="service" id="real-estate" value="Real estate">
                 <label for="real-estate">Real estate</label>
                 <br />
-                <input type="radio" name="service" value="Music">
+                <input type="radio" name="service" id="music" value="Music">
                 <label for="music">Music</label>
                 <br />
             </div>
@@ -51,9 +53,21 @@
             <textarea id="inquiry" name="inquiry" row="10" cols="50"></textarea>
             <br />
             <div id="submit-area">
-                <input id='submit-btn' type="submit" value="Submit">
+                <button id='submit-btn'>Submit</button>
             </div>
-        </form>
+        </div>
+    </div>
+    <div id="temp-output">
+        <p>This part of the page is still under construction.</p>
+        <p>We are sorry about any inconveniences this may have caused.</p>
+        <br />
+        <p>Your input information:</p>
+        <br />
+        <p id="user-name"></p>
+        <p id="user-phone"></p>
+        <p id="user-email"></p>
+        <p id="user-topic"></p>
+        <p id="user-inquiry"></p>
     </div>
 </body>
 </html>

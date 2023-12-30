@@ -250,12 +250,18 @@ footer {
 h3 {
     padding: 3vh;
 }
-#first-name, #last-name, #phone, #email, #inquiry {
+#first-name, #last-name, #email {
     margin: 0 0 20px 0;
-    width: 75%;
+    width: 39%;
+}
+#phone-1, #phone-2, #phone-3 {
+    margin: 0 0 20px 0;
+    width: 8%;
 }
 #inquiry {
+    margin: 0 0 20px 0;
     height: 200px;
+    width: 90%;
 }
 label {
     padding: 2px;
@@ -280,6 +286,9 @@ label span {
 }
 #submit-area {
     text-align: center;
+}
+#temp-output {
+    display: none;
 }
 /*-------------------vars & keyframes-------------------*/
 :root {
