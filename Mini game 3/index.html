@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory matching game with cards</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div id="welcome-modal">
+        <h3>Welcome! Please enjoy the classic memory matching game, presented to you with a standard deck of cards.</h3>
+        <p>A match is considered a pair of cards of the same color and number.</p>
+        <p>For example, 3 of Clubs and 3 of Spades are a match, but Queen of Diamonds and Queen of Spades are not.</p>
+        <button id="lets-play">LET'S PLAY!</button>
+    </div>
+    <div id="the-game">
+        <h1>Memory matching game</h1>
+        <h4 id="msg-board">Msg board</h4>
+        <div id="stats">
+            <p>Play time: <span id="minutes">00</span>:<span id="seconds">00</span></p>
+            <p>Moves: <span id="moves">0</span></p>
+            <p>Matches found: <span id="matches">0</span> / 26</p>
+        </div>
+        <table id="gameboard">
+            <tr>
+                <td></td>
+                <td>0</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>15</td>   
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td>23</td>    
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>    
+                <td>28</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td>31</td>   
+                <td>32</td>
+                <td>33</td>
+                <td>34</td>
+                <td>35</td>   
+                <td>36</td>
+                <td>37</td>
+            </tr>
+            <tr>
+                <td>38</td>
+                <td>39</td>   
+                <td>40</td>
+                <td>41</td>
+                <td>42</td>
+                <td>43</td>
+                <td>44</td>
+                <td>45</td> 
+            </tr>
+            <tr>
+                <td></td>
+                <td>46</td>
+                <td>47</td>
+                <td>48</td>
+                <td>49</td>
+                <td>50</td>
+                <td>51</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</body>
+<footer>
+    <button id="mode-toggle">LIGHT MODE</button>
+    <button id="restart">RESTART GAME</button>
+    <button id="home-page">HOME PAGE</button>
+</footer>
+</html>

@@ -207,7 +207,7 @@ footer {
     cursor: pointer;
 }
 /*-------------------projects-------------------*/
-#projects-container {
+#projects-container div {
     display: flex;
     justify-content: space-evenly;
 }
@@ -235,6 +235,10 @@ footer {
 }
 #hangman {
     background-image: url('projects/hangman.png');
+    background-size: 100% 100%;
+}
+#card-memory-game {
+    background-image: url('projects/card-memory-game.jpg');
     background-size: 100% 100%;
 }
 .projects p {

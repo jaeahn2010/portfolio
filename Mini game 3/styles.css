@@ -1,0 +1,75 @@
+body {
+    background-color: var(--background-black);
+    color: var(--text-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Optima", sans-serif;
+    text-align: center;
+}
+
+.light-mode {
+    background-color: var(--text-white);
+    color: var(--background-black);
+}
+
+#welcome-modal {
+    border: 1px solid var(--text-white);
+    border-radius: 10px;
+    margin: 20px 100px;
+    padding: 30px 75px;
+}
+
+button {
+    border: 1px solid var(--text-white);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+}
+
+button:hover {
+    background-color: var(--background-yellow);
+    cursor: pointer;
+    box-shadow: 5px 5px;
+}
+
+#the-game {
+    display: none;
+}
+
+#stats {
+    display: flex;
+    justify-content: space-around;
+}
+
+tr {
+    text-align: center;
+    height: 150px;
+}
+
+td {
+    font-size: 8px;
+    padding: 10px;
+}
+
+img {
+    border: 1px solid var(--text-white);
+    border-radius: 10px;
+    width: 70px;
+}
+
+.front-side {
+    display: none;
+    position: relative;
+}
+
+.back-side:hover {
+    cursor: pointer;
+    transform: scale(1.25);
+}
+
+:root {
+    --background-black: rgb(52, 52, 52);
+    --background-yellow: rgb(171, 171, 0);
+    --text-white: rgb(225, 225, 225);
+}
