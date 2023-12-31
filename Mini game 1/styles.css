@@ -110,3 +110,8 @@ button:hover, #submit-btn:hover, .move-choice:hover {
     --modal-text-white: rgb(240,240,240);
     --hover-green: rgb(0,175,0);
 }
+
+@media screen and (min-width: 1200px) {
+    #welcome-modal, #name-modal, #first-play-modal, #ox-modal, #play-again-modal {width: 25%;}
+    .move-choice {margin: 1vw; width: 125px;}
+}

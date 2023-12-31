@@ -75,6 +75,7 @@ footer {
 
 .slides img {
     animation: fade 1.5s;
+    border-radius: 35px;
     padding: 15px;
     height: 30vh;
     width: auto;
@@ -324,10 +325,24 @@ label span {
     a {margin: 2vw;}
     .main-heading {font-size: 36px;}
     #welcome {font-size: 18px; line-height: 2.5;}
+    .social-media {margin-top: 100px; width: 45px;}
     #bio {font-size: 18px; line-height: 2;}
     .slides img {height: 60vh; width: auto;}
     #bottom-right-modal div img {height: 23vw;}
     .projects {font-size: 18px;}
     #first-name, #last-name, #email {width: 21%;}
     #phone-1, #phone-2, #phone-3 {width: 5%;}
+}
+
+@media screen and (min-width: 1200px) {
+    #welcome {font-size: 28px; padding: 50px 100px 0;}
+    .social-media {margin-top: 200px; width: 75px;}
+    #bio {font-size: 24px; line-height: 2.5; padding-top: 20px;}
+    .slideshow {max-width: 2000px;}
+    .slides img {height: 100vh; width: auto;}
+    #top-left-btn, #top-right-btn, #bottom-left-btn, #bottom-right-btn, #middle-container {font-size: 24px;}
+    #all-modals {font-size: 24px; height: 60%;}
+    h3 {font-size: 36px; text-align: center;}
+    .projects {font-size: 24px;}
+    .projects:hover {transform: scale(1.25);}
 }

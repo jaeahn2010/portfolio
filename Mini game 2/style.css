@@ -278,3 +278,11 @@ body {
 :root {
     --setup-height: 240px;
 }
+
+@media screen and (min-width: 1200px) {
+    #qwerty-keyboard {width: 600px;}
+    #qwerty-keyboard div p {width: 25px; height: 25px;}
+    .letter {margin: 10px; width: 40px;}
+    #guess-word {width: 300px; height: 20px;}
+    #word-submit {margin: 5px; padding: 4px 8px; font-size: 16px;}
+}
