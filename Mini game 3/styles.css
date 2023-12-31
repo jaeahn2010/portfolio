@@ -4,6 +4,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     font-family: "Optima", sans-serif;
     text-align: center;
 }
@@ -40,6 +41,11 @@ button:hover {
 #stats {
     display: flex;
     justify-content: space-around;
+}
+
+table {
+    border: 1px solid white;
+    width: 95vw;
 }
 
 tr {
