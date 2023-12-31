@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <h1 id="title">Hangman</h1>
+    <div id="category-modal">
+        <h3>Please choose a category.</h3>
+        <p id="animals">Animals</p>
+        <p id="cars">Cars</p>
+        <p id="capitals">Capitals</p>
+        <p id="composers">Composers</p>
+        <p id="countries">Countries</p>
+        <p id="household-items">Household Items</p>
+        <p id="body-parts">Human Body</p>
+        <p id="random">Random</p>
+    </div>
+    <div id="difficulty-modal">
+        <h3>Please choose the difficulty level.</h3>
+        <p id="easy">Easy &#40;14 guesses&#41;</p>
+        <p id="medium">Medium &#40;10 guesses&#41;</p>
+        <p id="hard">Hard &#40;6 guesses&#41;</p>
+    </div>
+    <div id="setup">
+        <div id="noose-left">
+            <div id="top-part"></div>
+            <div id="head">
+                <div id="eyes">
+                    <div id="left-eye"></div>
+                    <div id="right-eye"></div>
+                </div>
+                <div id="nose"></div>
+                <div id="mouth"></div>
+            </div>
+            <div id="the-body">
+                <div id="upper-body">
+                    <div id="upper-left">
+                        <div id="left-arm"></div>    
+                    </div>
+                    <div id="torso"></div>
+                    <div id="upper-right">
+                        <div id="right-arm"></div>
+                    </div>
+                </div>
+                <div id="lower-body">
+                    <div id="lower-left">
+                        <div id="left-leg"></div>
+                    </div>
+                    <div id="lower-right">
+                        <div id="right-leg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="noose-right"></div>
+    </div>
+    <div id="word-guess"></div>
+    <div id="qwerty-keyboard">
+        <div id="row-1">
+            <p id="q">Q</p>
+            <p id="w">W</p>
+            <p id="e">E</p>
+            <p id="r">R</p>
+            <p id="t">T</p>
+            <p id="y">Y</p>
+            <p id="u">U</p>
+            <p id="i">I</p>
+            <p id="o">O</p>
+            <p id="p">P</p>
+        </div>
+        <div id="row-2">
+            <p id="a">A</p>
+            <p id="s">S</p>
+            <p id="d">D</p>
+            <p id="f">F</p>
+            <p id="g">G</p>
+            <p id="h">H</p>
+            <p id="j">J</p>
+            <p id="k">K</p>
+            <p id="l">L</p>
+        </div>
+        <div id="row-3">
+            <p id="z">Z</p>
+            <p id="x">X</p>
+            <p id="c">C</p>
+            <p id="v">V</p>
+            <p id="b">B</p>
+            <p id="n">N</p>
+            <p id="m">M</p>
+        </div>
+    </div>
+    <div id="guess-box">
+        <label for="guess-word">Guess the word:</label>
+        <br />
+        <input type="text" id="guess-word" name="guess-word">
+        <button id="word-submit">Submit</button>
+    </div>
+    <div id="bottom-buttons">
+        <p id="restart">RESTART GAME</p>
+        <p id="home-page">GO TO HOME PAGE</p>
+    </div>
+</body>
+</html>

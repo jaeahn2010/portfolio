@@ -1,0 +1,288 @@
+/*---------general---------*/
+* {
+    background-color: rgb(225, 225, 225);
+    font-family: "Optima", sans-serif;
+}
+
+#title {
+    text-align: center;
+    text-decoration: underline;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*---------bottom buttons---------*/
+#bottom-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+#bottom-buttons p {
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 30px 10px 10px 10px;
+    padding: 10px;
+}
+
+#bottom-buttons p:hover {
+    background-color: rgb(192, 192, 0);
+    cursor: pointer;
+    box-shadow: 5px 5px;
+}
+
+/*---------modals---------*/
+#category-modal {
+    text-align: center;
+}
+
+#category-modal p, #difficulty-modal p {
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 10px 275px;
+    padding: 10px;
+    width: 200px;
+}
+
+#category-modal p:hover, #difficulty-modal p:hover {
+    background-color: rgb(192, 192, 0);
+    cursor: pointer;
+    box-shadow: 5px 5px;
+}
+
+#difficulty-modal {
+    display: none;
+    text-align: center;
+}
+
+/*---------hangman graphic---------*/
+#setup {
+    border: 3px solid black;
+    /* display: flex; */
+    display: none;
+    margin: calc(var(--setup-height) / 16);
+    padding: calc(var(--setup-height) / 8);
+    width: var(--setup-height);
+    height: var(--setup-height);
+}
+
+#noose-left {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    width: calc(var(--setup-height) / 2);
+}
+
+#noose-right {
+    border-bottom: 2px solid black;
+    width: calc(var(--setup-height) / 2);
+}
+
+#top-part {
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    height: calc(var(--setup-height) / 16);
+    width: calc(var(--setup-height) / 4);
+    margin-left: calc(var(--setup-height) / 4.1); /* if /4, it overrides the border. why? */
+}
+
+#head {
+    height: calc(var(--setup-height) / 8);
+    width: calc(var(--setup-height) / 8);
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-left: calc(var(--setup-height) * 3 / 16);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#eyes {
+    height: calc(var(--setup-height) / 64);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#left-eye {
+    border: 1px solid black;
+}
+
+#right-eye {
+    border: 1px solid black;
+}
+
+#nose {
+    border-right: 1px solid black;
+    height: calc(var(--setup-height) / 64);
+    width: calc(var(--setup-height) / 16);
+}
+
+#mouth {
+    border: 1px solid black;
+    margin-top: calc(var(--setup-height) / 64);
+    margin-left: calc(var(--setup-height) / 32);
+    width: calc(var(--setup-height) / 16);
+}
+
+#upper-body { 
+    display: flex;
+    width: calc(var(--setup-height) / 4);
+    height: calc(var(--setup-height) / 16);
+    margin-left: calc(var(--setup-height) / 8);
+}
+
+#upper-left {
+    border-bottom: 1px solid black;
+    width: calc(var(--setup-height) / 8);
+    height: calc(var(--setup-height) / 16);
+    transform: translate(-2px, 5px) rotate(-30deg);
+}
+
+#left-arm {
+    border-left: 1px solid black;
+    width: calc(var(--setup-height) / 8);
+    height: calc(var(--setup-height) * 3 / 64);
+    transform: translate(-7px, -3px) rotate(-30deg);
+}
+
+#torso {
+    border: 1px solid black;
+    height: calc(var(--setup-height) / 4);
+}
+
+#upper-right {
+    border-bottom: 1px solid black;
+    width: calc(var(--setup-height) / 8);
+    height: calc(var(--setup-height) / 16);
+    transform: translate(2px, 5px) rotate(30deg);
+}
+
+#right-arm {
+    border-right: 1px solid black;
+    width: calc(var(--setup-height) / 8);
+    height: calc(var(--setup-height) * 3 / 64);
+    transform: translate(7px, -3px) rotate(30deg);
+}
+
+#lower-body {
+    display: flex;
+    width: calc(var(--setup-height) / 4);
+    margin-left: calc(var(--setup-height) / 8);
+    margin-top: calc(var(--setup-height) / 8);
+}
+
+#lower-left {
+    border-bottom: 1px solid black;
+    width: calc(var(--setup-height) / 8);
+    height: calc(var(--setup-height) / 16);
+    transform: translate(-2px, 12px) rotate(-30deg);
+}
+
+#left-leg {
+    border-left: 1px solid black;
+    width: calc(var(--setup-height) / 8);
+    height: calc(var(--setup-height) / 16);
+    transform: translate(-8px, -8px) rotate(-30deg);
+}
+
+#lower-right {
+    border-bottom: 1px solid black;
+    width: calc(var(--setup-height) / 8);
+    height: calc(var(--setup-height) / 16);
+    transform: translate(2px, 12px) rotate(30deg);
+}
+
+#right-leg {
+    border-right: 1px solid black;
+    width: calc(var(--setup-height) / 8);
+    height: calc(var(--setup-height) / 16);
+    transform: translate(8px, -8px) rotate(30deg);
+}
+
+#head, #torso, #upper-left, #upper-right, #left-arm, #right-arm, #lower-left, #lower-right, #left-leg, #right-leg, #left-eye, #right-eye, #nose, #mouth {
+    display: none;
+}
+
+/*---------word guess---------*/
+#word-guess {
+    display: none;
+    margin: 10px 30px 30px 30px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.letter {
+    display: flex;
+    border-bottom: 3px solid black;
+    margin: 5px;
+    width: 20px;
+    justify-content: center;
+}
+
+/*---------qwerty keyboard---------*/
+#qwerty-keyboard {
+    border: 3px solid black;
+    width: 300px;
+    padding: 10px;
+    display: none;
+    text-align: center;
+}
+
+#qwerty-keyboard div p {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 8px;
+}
+
+#qwerty-keyboard div p:hover {
+    background-color: rgb(192, 192, 0);
+    cursor: pointer;
+    box-shadow: 5px 5px;
+    transform: scale(1.25);
+}
+
+#row-1, #row-2, #row-3 {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1px;
+}
+
+/*---------word guess input box---------*/
+#guess-box {
+    display: none;
+    margin: 30px 0px;
+}
+#guess-word {
+    border: 3px solid black;
+}
+
+#word-submit {
+    border: 2px solid black;
+    border-radius: 20px;
+    color: black;
+}
+#word-submit:hover {
+    background-color: rgb(192, 192, 0);
+    cursor: pointer;
+    box-shadow: 5px 5px;
+}
+
+/*---------CSS vars---------*/
+:root {
+    --setup-height: 240px;
+}
+
+@media screen and (min-width: 1200px) {
+    #qwerty-keyboard {width: 600px;}
+    #qwerty-keyboard div p {width: 25px; height: 25px;}
+    .letter {margin: 10px; width: 40px;}
+    #guess-word {width: 300px; height: 20px;}
+    #word-submit {margin: 5px; padding: 4px 8px; font-size: 16px;}
+}
