@@ -46,7 +46,7 @@ homePage.addEventListener('click', () => {
 
 letsPlay.addEventListener('click', () => {
     welcomeModal.style.display = 'none';
-    theGame.style.display = 'block';
+    theGame.style.display = 'flex';
 });
 
 //place cards facedown on the board
@@ -100,7 +100,8 @@ let moveCount = 0;
 let flipCount = 0;
 let matchCount = 0;
 let pair = [];
-let test = board.addEventListener('click', (evt) => {
+board.addEventListener('click', flipCards);
+function flipCards(evt) {
     if (matchCount === 26) {
         alert(`You win! 
 You found all 26 matches in ${minuteCount} minutes and ${secondCount} seconds.
@@ -120,9 +121,10 @@ You made a total of ${moveCount} moves.`);
         flipCount = 0;
         checkPair(pair[0], pair[1]);
     }
-});
+}
 
 function checkPair(card1, card2) {
+    board.removeEventListener('click', flipCards);
     let card1Suit = card1.nextSibling.src.slice(-7,-6);
     let card2Suit = card2.nextSibling.src.slice(-7,-6);
     let card1Number = card1.nextSibling.src.slice(-6,-4);
@@ -166,5 +168,7 @@ function checkPair(card1, card2) {
         pair = [];
         moveCount++;
         moves.innerText = moveCount;
+        board.addEventListener('click', flipCards);
+        msgBoard.innerText = 'Please make a move.';
     }, 2000);
 }

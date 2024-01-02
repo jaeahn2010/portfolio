@@ -11,21 +11,53 @@ body {
 
 .light-mode {
     background-color: var(--text-white);
-    color: var(--background-black);
+}
+
+.light-mode table {
+    border: 1px solid var(--background-black);
 }
 
 #welcome-modal {
+    background-color: gray;
     border: 1px solid var(--text-white);
     border-radius: 10px;
-    margin: 20px 100px;
-    padding: 30px 75px;
+    margin: 20px;
+    padding: 10px 25px;
+}
+
+#msg-board, #stats {
+    background-color: gray;
+    border: 1px solid var(--text-white);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 5px 10px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+#stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 20px;
+    padding: 2px;
+    top: 50px;
+}
+
+#stats div {
+    background-color: rgb(80, 80, 80);
+    border: 1px solid var(--text-white);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 5px 5px 0 5px;
 }
 
 button {
     border: 1px solid var(--text-white);
     border-radius: 10px;
     padding: 10px;
-    margin: 20px;
+    margin: 10px;
 }
 
 button:hover {
@@ -36,32 +68,29 @@ button:hover {
 
 #the-game {
     display: none;
-}
-
-#stats {
-    display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }
 
 table {
-    border: 1px solid white;
-    width: 95vw;
+    border: 1px solid var(--text-white);
+    border-radius: 20px;
+    width: 90vw;
 }
 
 tr {
     text-align: center;
-    height: 150px;
+    height: 70px;
 }
 
 td {
-    font-size: 8px;
-    padding: 10px;
+    padding: 3px;
 }
 
 img {
     border: 1px solid var(--text-white);
     border-radius: 10px;
-    width: 70px;
+    width: 35px;
 }
 
 .front-side {
@@ -78,4 +107,14 @@ img {
     --background-black: rgb(52, 52, 52);
     --background-yellow: rgb(171, 171, 0);
     --text-white: rgb(225, 225, 225);
+}
+
+@media screen and (min-width: 600px) {
+    #welcome-modal {margin: 80px; padding: 10px 25px;}
+    tr {height: 100px;}
+    img {width: 60px;}
+}
+
+@media screen and (min-width: 1200px) {
+    table {width: 60vw;}
 }
